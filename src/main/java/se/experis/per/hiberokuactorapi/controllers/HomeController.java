@@ -18,11 +18,11 @@ public class HomeController {
     public ResponseEntity<CommonResponse> landing(HttpServletRequest request){
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         commandResponse.message = "index page coming soon...";
 
-        //log and return
+        // For logging and returns results
         command.setResult(HttpStatus.OK);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, HttpStatus.OK);
@@ -32,11 +32,11 @@ public class HomeController {
     public ResponseEntity<CommonResponse> setup(HttpServletRequest request){
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         commandResponse.message = "Setup on-going...";
 
-        //log and return
+        // For logging and returns results
         command.setResult(HttpStatus.OK);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, HttpStatus.OK);
@@ -46,9 +46,7 @@ public class HomeController {
     public ResponseEntity<ArrayList<Command>> log(HttpServletRequest request){
         Command command = new Command(request);
 
-        //no common response
-
-        //log and return
+        // For logging and returns results
         command.setResult(HttpStatus.OK);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<ArrayList<Command>>(Logger.getInstance().getLog(), HttpStatus.OK);

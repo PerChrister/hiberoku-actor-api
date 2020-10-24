@@ -26,16 +26,15 @@ public class ActorController {
     public ResponseEntity<CommonResponse> actorRoot(HttpServletRequest request){
         Command command = new Command(request);
 
-        //process
+        // For the processing
         CommonResponse commandResponse = new CommonResponse();
         commandResponse.data = null;
         commandResponse.message = "Not implemented";
 
-        commandResponse.message = "Sup!";
 
         HttpStatus resp = HttpStatus.NOT_IMPLEMENTED;
 
-        //log and return
+        // For logging
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -45,14 +44,14 @@ public class ActorController {
     public ResponseEntity<CommonResponse> getAllActors(HttpServletRequest request){
         Command command = new Command(request);
 
-        //process
+        // For the processing
         CommonResponse commandResponse = new CommonResponse();
         commandResponse.data = repository.findAll();
         commandResponse.message = "All actors";
 
         HttpStatus resp = HttpStatus.OK;
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -62,7 +61,7 @@ public class ActorController {
     public ResponseEntity<CommonResponse> getActorById(HttpServletRequest request, @PathVariable("id") Integer id){
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         HttpStatus resp;
 
@@ -76,7 +75,7 @@ public class ActorController {
             resp = HttpStatus.NOT_FOUND;
         }
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -86,7 +85,7 @@ public class ActorController {
     public ResponseEntity<CommonResponse> getMoviesbyActor(HttpServletRequest request, @PathVariable("id") Integer id){
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         HttpStatus resp;
 
@@ -102,7 +101,7 @@ public class ActorController {
             resp = HttpStatus.NOT_FOUND;
         }
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -114,7 +113,7 @@ public class ActorController {
 
 
         String searchWord = word.toUpperCase();
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         List<Actor> allActors = repository.findAll();
         ArrayList<Actor> results = new ArrayList<Actor>();
@@ -134,7 +133,7 @@ public class ActorController {
 
         HttpStatus resp = HttpStatus.OK;
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -144,7 +143,7 @@ public class ActorController {
     public ResponseEntity<CommonResponse> addActor(HttpServletRequest request, HttpServletResponse response, @RequestBody Actor actor){
         Command command = new Command(request);
 
-        //process
+        // For the Process
         actor = repository.save(actor);
 
         CommonResponse commandResponse = new CommonResponse();
@@ -155,7 +154,7 @@ public class ActorController {
 
         response.addHeader("Location", "/actor/" + actor.id);
 
-        //log and return
+        // For logging and returns the results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -166,7 +165,7 @@ public class ActorController {
     public ResponseEntity<CommonResponse> updateActor(HttpServletRequest request, @RequestBody Actor newActor, @PathVariable Integer id) {
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         HttpStatus resp;
 
@@ -197,7 +196,7 @@ public class ActorController {
             resp = HttpStatus.NOT_FOUND;
         }
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -207,7 +206,7 @@ public class ActorController {
     public ResponseEntity<CommonResponse> replaceActor(HttpServletRequest request, @RequestBody Actor newActor, @PathVariable Integer id) {
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         HttpStatus resp;
 
@@ -230,7 +229,7 @@ public class ActorController {
             resp = HttpStatus.NOT_FOUND;
         }
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
@@ -240,7 +239,7 @@ public class ActorController {
     public ResponseEntity<CommonResponse> deleteActor(HttpServletRequest request, @PathVariable Integer id) {
         Command command = new Command(request);
 
-        //process
+        // For the Process
         CommonResponse commandResponse = new CommonResponse();
         HttpStatus resp;
 
@@ -253,7 +252,7 @@ public class ActorController {
             resp = HttpStatus.NOT_FOUND;
         }
 
-        //log and return
+        // For logging and returns results
         command.setResult(resp);
         Logger.getInstance().logCommand(command);
         return new ResponseEntity<>(commandResponse, resp);
